@@ -198,7 +198,7 @@ def build_card(p, qual, min_ab, selected_year, all_years):
 
             # Savant-style circle — perfectly round using scatter
             circle_x=0.915
-            ax.scatter([circle_x],[y],s=(row_h*580)**2,color=color,
+            ax.scatter([circle_x],[y],s=(row_h*420)**2,color=color,
                       edgecolors='white',linewidths=1.5,zorder=5,
                       transform=ax.transAxes,clip_on=False)
             ax.text(circle_x,y,str(int(pct)),ha='center',va='center',
