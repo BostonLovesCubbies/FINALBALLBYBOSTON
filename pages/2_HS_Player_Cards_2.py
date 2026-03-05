@@ -103,13 +103,13 @@ def build_card(p, qual, min_ab, selected_year, all_years):
 
     # Games box next to name
     g_val = int(float(p.get('g', 0)))
-    ax_hdr.add_patch(FancyBboxPatch((0.215,0.58),0.065,0.36,boxstyle='round,pad=0.005',
+    ax_hdr.add_patch(FancyBboxPatch((0.210,0.52),0.090,0.46,boxstyle='round,pad=0.005',
         facecolor='#1c1c1c',edgecolor=BORDER_COLOR,linewidth=1.2,
         transform=ax_hdr.transAxes,zorder=2))
-    ax_hdr.text(0.2475,0.82,'GAMES',transform=ax_hdr.transAxes,color=TEXT_COLOR,
-                fontsize=8,fontweight='bold',ha='center',va='center',zorder=3)
-    ax_hdr.text(0.2475,0.66,str(g_val),transform=ax_hdr.transAxes,color=TEXT_COLOR,
-                fontsize=16,fontweight='bold',ha='center',va='center',zorder=3)
+    ax_hdr.text(0.255,0.84,'GAMES',transform=ax_hdr.transAxes,color=TEXT_COLOR,
+                fontsize=11,fontweight='bold',ha='center',va='center',zorder=3)
+    ax_hdr.text(0.255,0.63,str(g_val),transform=ax_hdr.transAxes,color=TEXT_COLOR,
+                fontsize=22,fontweight='bold',ha='center',va='center',zorder=3)
     # School / Pos / Year
     ax_hdr.text(0.01,0.30,f"{p['team']}  ·  {p['pos']}  ·  {selected_year}",
                 transform=ax_hdr.transAxes,color=TEXT_COLOR,fontsize=16,
