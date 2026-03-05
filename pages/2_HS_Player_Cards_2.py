@@ -127,11 +127,11 @@ def build_card(p, qual, min_ab, selected_year, all_years):
         sd=next((s for s in STAT_DEFS if s[0]==key),None)
         col=(pct_color(get_percentile(float(val),qual[key],sd[2]))
              if sd and key in qual.columns and len(qual)>0 else TEXT_COLOR)
-        ax_hdr.text(cx,by0+bh*0.67,val_str,transform=ax_hdr.transAxes,color=col,
-                    fontsize=15,fontweight='bold',ha='center',va='center',zorder=3)
-        ax_hdr.text(cx,by0+bh*0.20,labels[key],transform=ax_hdr.transAxes,
+        ax_hdr.text(cx,by0+bh*0.75,labels[key],transform=ax_hdr.transAxes,
                     color=TEXT_COLOR,fontsize=10,fontweight='bold',
                     ha='center',va='center',zorder=3)
+        ax_hdr.text(cx,by0+bh*0.28,val_str,transform=ax_hdr.transAxes,color=col,
+                    fontsize=15,fontweight='bold',ha='center',va='center',zorder=3)
         if i<n_boxes-1:
             ax_hdr.plot([bx0+cw*(i+1)]*2,[by0+0.05,by0+bh-0.05],
                         color=BORDER_COLOR,linewidth=0.7,
@@ -149,7 +149,7 @@ def build_card(p, qual, min_ab, selected_year, all_years):
         ax.text(0.01,0.98,section_label,ha='left',va='top',color=TEXT_COLOR,
                 fontsize=13,fontweight='bold',transform=ax.transAxes)
         ax.text(0.99,0.98,f'{pool_years} league pool',ha='right',va='top',
-                color=DIM_COLOR,fontsize=9,transform=ax.transAxes)
+                color=TEXT_COLOR,fontsize=10,fontweight='bold',transform=ax.transAxes)
         ax.plot([0.01,0.99],[0.94,0.94],color=BORDER_COLOR,linewidth=0.6,
                 transform=ax.transAxes)
 
@@ -261,9 +261,9 @@ def build_card(p, qual, min_ab, selected_year, all_years):
                         color=TEXT_COLOR,fontsize=10,fontweight='bold',
                         transform=ax_tbl.transAxes)
 
-    fig.text(0.5,0.015,
-             'Stats via MaxPreps  ·  wOBA uses 2025 MLB linear weights  ·  K% and BB% per PA  ·  Percentiles vs multi-year qualified league pool',
-             ha='center',va='bottom',color='#555555',fontsize=8,style='italic')
+    fig.text(0.5,0.032,
+             'Stats via MaxPreps  ·  wOBA uses 2025 MLB linear weights  ·  K% and BB% per PA  ·  Percentiles vs multi-year qualified league pool  ·  Cards created by Boston Nahigian',
+             ha='center',va='bottom',color='#888888',fontsize=8,fontweight='bold')
 
     buf=BytesIO()
     plt.savefig(buf,dpi=220,bbox_inches='tight',facecolor=BG_COLOR,
