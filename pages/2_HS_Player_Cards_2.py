@@ -196,13 +196,11 @@ def build_card(p, qual, min_ab, selected_year, all_years):
             ax.plot([bl+bw2*0.5]*2,[by2-0.005,by2+bh2+0.005],
                     color='#555555',linewidth=1.0,transform=ax.transAxes,zorder=3)
 
-            # Savant-style circle — perfectly round, percentile number inside
-            circle_x=0.915; circle_r=row_h*0.32
-            # Make circle perfectly round by accounting for figure aspect
-            circ=Circle((circle_x,y),circle_r,transform=ax.transAxes,
-                        facecolor=color,edgecolor='white',linewidth=1.5,zorder=5,
-                        clip_on=False)
-            ax.add_patch(circ)
+            # Savant-style circle — perfectly round using scatter
+            circle_x=0.915
+            ax.scatter([circle_x],[y],s=(row_h*580)**2,color=color,
+                      edgecolors='white',linewidths=1.5,zorder=5,
+                      transform=ax.transAxes,clip_on=False)
             ax.text(circle_x,y,str(int(pct)),ha='center',va='center',
                     color='white',fontsize=10,fontweight='bold',
                     transform=ax.transAxes,zorder=6)
@@ -254,8 +252,8 @@ def build_card(p, qual, min_ab, selected_year, all_years):
     # League avg row
     ax_tbl.plot([0.01,0.99],[0.28,0.28],color=BORDER_COLOR,linewidth=0.5,
                 transform=ax_tbl.transAxes)
-    ax_tbl.text(0.01,0.16,'LG AVG',ha='left',va='center',color=TEXT_COLOR,
-                fontsize=10,fontweight='bold',transform=ax_tbl.transAxes)
+    ax_tbl.text(0.002,0.16,'LG AVG',ha='left',va='center',color=DIM_COLOR,
+                fontsize=8,fontweight='bold',transform=ax_tbl.transAxes)
     for ci,key in enumerate(tbl_cols):
         if key in qual.columns:
             avg_val=qual[key].mean()
@@ -264,8 +262,7 @@ def build_card(p, qual, min_ab, selected_year, all_years):
                         transform=ax_tbl.transAxes)
 
     fig.text(0.5,0.015,
-             'Stats via MaxPreps  ·  wOBA uses 2025 MLB linear weights  ·  '
-             'Percentiles vs multi-year qualified league pool',
+             'Stats via MaxPreps  ·  wOBA uses 2025 MLB linear weights  ·  K% and BB% per PA  ·  Percentiles vs multi-year qualified league pool',
              ha='center',va='bottom',color='#555555',fontsize=8,style='italic')
 
     buf=BytesIO()
