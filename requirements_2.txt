@@ -1,0 +1,9 @@
+pybaseball
+xgboost
+scikit-learn
+matplotlib
+numpy
+pandas
+scipy
+pillow
+requests
